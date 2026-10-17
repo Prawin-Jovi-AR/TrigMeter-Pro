@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zion Matriculation Higher Secondary School | TrigMeter Pro Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07090e;
+      --surface-1: #0e1320;
+      --surface-2: #151d32;
+      --border: #1e2b47;
+      --border-focus: #38bdf8;
+      --accent: #38bdf8;
+      --gold: #fbbf24;
+      --emerald: #10b981;
+      --rose: #f43f5e;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-ui: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-ui);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 18px;
+    }
+
+    .shell {
+      max-width: 1480px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #0e172a, #131d36);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+      position: relative;
+      overflow: hidden;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #38bdf8, #fbbf24, #10b981);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand-crest {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #b45309, #fbbf24);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 22px;
+      color: #07090e;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .brand-title h1 {
+      font-size: 19px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+    .brand-title p {
+      font-size: 12px;
+      color: var(--gold);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .brand-title span {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Metadata Bar */
+    .metadata-strip {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+    }
+    .metadata-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .metadata-group label {
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 11px;
+    }
+    .metadata-group input {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 5px 9px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      outline: none;
+    }
+
+    /* Button Controls */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-ui);
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 9px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #0284c7, #0ea5e9);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
+    }
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.5);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: var(--surface-2);
+      border-color: var(--border);
+      color: var(--text-main);
+    }
+    .btn-secondary:hover { background: #1c2742; }
+    .btn-danger {
+      background: rgba(244, 63, 94, 0.15);
+      border-color: rgba(244, 63, 94, 0.3);
+      color: #fb7185;
+    }
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      background: rgba(244, 63, 94, 0.1);
+      border: 1px solid rgba(244, 63, 94, 0.25);
+      color: #fb7185;
+    }
+    .badge-status.active {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.25);
+      color: #34d399;
+    }
+    .badge-status.simulation {
+      background: rgba(251, 191, 36, 0.1);
+      border-color: rgba(251, 191, 36, 0.3);
+      color: var(--gold);
+    }
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* Metric Ribbon */
+    .metrics-ribbon {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+    }
+    .metric-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .metric-card:hover::before { opacity: 1; }
+    .metric-card.accent-green::before { background: var(--emerald); opacity: 1; }
+    .metric-card.accent-gold::before { background: var(--gold); opacity: 1; }
+
+    .metric-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+    }
+    .metric-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Workspace */
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 16px;
+    }
+    @media (max-width: 1100px) {
+      .workspace-grid { grid-template-columns: 1fr; }
+    }
+
+    .main-stage {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .card-panel {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .panel-header h2 {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .canvas-container {
+      position: relative;
+      width: 100%;
+      height: 360px;
+      background: #080c14;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .proof-box {
+      background: #080c14;
+      border-left: 3px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      padding: 14px 18px;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      line-height: 1.7;
+      color: #cbd5e1;
+    }
+    .proof-box strong { color: #fff; }
+    .proof-highlight { color: var(--accent); font-weight: 600; }
+    .proof-emerald { color: var(--emerald); font-weight: 600; }
+    .proof-warning { color: var(--rose); font-weight: 600; }
+
+    /* Control Deck */
+    .control-deck {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .deck-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .deck-section label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .segmented-control {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      background: var(--surface-2);
+      padding: 4px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .segmented-control button {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 7px 0;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      cursor: pointer;
+    }
+    .segmented-control button.active {
+      background: var(--gold);
+      color: #07090e;
+      font-weight: 700;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 8px 12px;
+    }
+    .input-group input, .input-group select {
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      width: 100%;
+      outline: none;
+    }
+    .input-group span {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Challenge Box */
+    .quiz-card {
+      background: linear-gradient(145deg, #12192c, #1a2540);
+      border: 1px solid #283759;
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .quiz-score-banner {
+      font-size: 12px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      display: none;
+      font-weight: 600;
+      font-family: var(--font-mono);
+    }
+
+    /* Table */
+    .table-container {
+      overflow-x: auto;
+      max-height: 220px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      font-family: var(--font-mono);
+    }
+    th {
+      position: sticky;
+      top: 0;
+      background: var(--surface-2);
+      color: var(--text-muted);
+      padding: 9px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-weight: 600;
+    }
+    td {
+      padding: 9px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      color: #cbd5e1;
+    }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <div class="brand-crest">Z</div>
+        <div class="brand-title">
+          <h1>Zion Matriculation Higher Secondary School</h1>
+          <p>Department of Mathematics &bull; Senior Secondary Science Exhibition</p>
+          <span>TRIGMETER PRO: EMBEDDED ULTRASONIC &amp; TRIGONOMETRIC HYPSOMETER</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div id="statusBadge" class="badge-status">
+          <span class="pulse-dot"></span>
+          <span id="statusText">Hardware Offline</span>
+        </div>
+        <button id="connectBtn" class="btn btn-primary">Connect Uno</button>
+        <button id="holdBtn" class="btn btn-secondary" disabled>Freeze / Hold</button>
+      </div>
+    </header>
+
+    <!-- Student Details -->
+    <div class="metadata-strip">
+      <div class="metadata-group">
+        <label>Candidate Name:</label>
+        <input type="text" id="candidateName" value="Prawin Jovi" />
+      </div>
+      <div class="metadata-group">
+        <label>Exam Roll No:</label>
+        <input type="text" id="rollNumber" value="12A2111" style="width: 110px;" />
+      </div>
+      <div class="metadata-group">
+        <label>Academic Session:</label>
+        <input type="text" value="2026 – 2027" readonly style="width: 100px; color: var(--gold);" />
+      </div>
+      <div class="metadata-group">
+        <label>Signal Quality:</label>
+        <span id="signalConfidence" style="font-family: var(--font-mono); color: var(--emerald);">100% (High Confidence)</span>
+      </div>
+    </div>
+
+    <!-- Metrics Ribbon -->
+    <section class="metrics-ribbon">
+      <div class="metric-card">
+        <div class="metric-label">Adjacent Distance (x) <span>Base</span></div>
+        <div class="metric-value" id="dispBase">--</div>
+        <div class="metric-sub">Ultrasonic Time-of-Flight</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Elevation Angle (&theta;) <span>Inclination</span></div>
+        <div class="metric-value" id="dispAngle">--&deg;</div>
+        <div class="metric-sub" id="asymptoteWarn">Optical Sight Axis</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Calculated Height (h) <span>x &middot; tan(&theta;)</span></div>
+        <div class="metric-value" id="dispHeight">--</div>
+        <div class="metric-sub">Geometric Elevation</div>
+      </div>
+      <div class="metric-card accent-green">
+        <div class="metric-label">Total Real Height (H) <span>h + y₀</span></div>
+        <div class="metric-value" id="dispTotalHeight" style="color: var(--emerald);">--</div>
+        <div class="metric-sub">Includes Tripod / Eye Height</div>
+      </div>
+      <div class="metric-card accent-gold">
+        <div class="metric-label">Line of Sight (L) <span>Hypotenuse</span></div>
+        <div class="metric-value" id="dispHypo" style="color: var(--gold);">--</div>
+        <div class="metric-sub">Direct Euclidean Distance</div>
+      </div>
+    </section>
+
+    <!-- Workspace -->
+    <div class="workspace-grid">
+      <main class="main-stage">
+        <div class="card-panel">
+          <div class="panel-header">
+            <h2>Real-time Euclidean Vector Diagram</h2>
+            <div style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);">DYNAMIC PROJECTION PLANE</div>
+          </div>
+          <div class="canvas-container">
+            <canvas id="vectorCanvas"></canvas>
+          </div>
+        </div>
+
+        <div class="card-panel">
+          <div class="panel-header">
+            <h2>Analytical Mathematical Verification</h2>
+          </div>
+          <div class="proof-box" id="proofTrace">
+            Initialize sensor telemetry or run simulator to start real-time derivation...
+          </div>
+        </div>
+
+        <div class="card-panel">
+          <div class="panel-header">
+            <h2>Observation Record &amp; Experimental Statistics</h2>
+            <div style="display: flex; gap: 8px;">
+              <button id="recordBtn" class="btn btn-secondary" style="padding: 5px 10px; font-size: 11.5px;">Log Reading</button>
+              <button id="clearBtn" class="btn btn-secondary" style="padding: 5px 10px; font-size: 11.5px;">Clear Log</button>
+              <button id="exportBtn" class="btn btn-secondary" style="padding: 5px 10px; font-size: 11.5px;">Download CSV</button>
+            </div>
+          </div>
+          <div class="table-container">
+            <table id="telemetryTable">
+              <thead>
+                <tr>
+                  <th>Trial #</th>
+                  <th>Angle (&theta;)</th>
+                  <th>Base (x)</th>
+                  <th>tan(&theta;)</th>
+                  <th>h (Computed)</th>
+                  <th>Total Height (H)</th>
+                  <th>Hypotenuse (L)</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+
+      <!-- Sidebar Controls -->
+      <aside class="control-deck">
+        <div class="card-panel">
+          <div class="panel-header">
+            <h2>Instrument Calibration</h2>
+          </div>
+
+          <div class="deck-section">
+            <label>Measurement Unit</label>
+            <div class="input-group">
+              <select id="unitSelector">
+                <option value="cm">Centimeters (cm)</option>
+                <option value="m">Meters (m)</option>
+                <option value="ft">Feet &amp; Inches (ft)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="deck-section">
+            <label>Tripod / Eye-Level Offset (y₀)</label>
+            <div class="input-group">
+              <input type="number" id="offsetInput" value="120.0" step="0.5" />
+              <span id="offsetUnitLabel">cm</span>
+            </div>
+          </div>
+
+          <div class="deck-section">
+            <label>Ambient Temperature (Sound Speed Cal.)</label>
+            <div class="input-group">
+              <input type="number" id="tempInput" value="28" step="1" min="10" max="50" />
+              <span>&deg;C &bull; <span id="speedOfSound" style="color:var(--text-main);">348.3 m/s</span></span>
+            </div>
+          </div>
+
+          <div class="deck-section">
+            <label>Preset Elevation Angles</label>
+            <div class="segmented-control">
+              <button data-angle="0">0&deg;</button>
+              <button data-angle="30">30&deg;</button>
+              <button class="active" data-angle="45">45&deg;</button>
+              <button data-angle="60">60&deg;</button>
+            </div>
+          </div>
+
+          <div class="deck-section">
+            <label>Fine Angle Adjustment (&theta; &le; 89&deg;)</label>
+            <div class="input-group">
+              <input type="range" id="angleRange" min="0" max="89" value="45" />
+              <span id="rangeVal" style="width: 32px; text-align: right;">45&deg;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exhibition Interactive Challenge -->
+        <div class="quiz-card">
+          <h2 style="font-size: 13.5px; font-weight: 700;">Exhibition Challenge: Height Guesser</h2>
+          <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.5;">
+            Challenge judges to estimate an elevated target's height and test their estimate against laser/ultrasonic trigonometric calculation.
+          </p>
+          <div class="input-group" style="background: rgba(0,0,0,0.3);">
+            <input type="number" id="visitorGuess" placeholder="Enter estimate..." />
+            <span id="guessUnitLabel">cm</span>
+          </div>
+          <button id="verifyGuessBtn" class="btn btn-primary" style="justify-content: center;">Compute Accuracy</button>
+          <div id="quizResult" class="quiz-score-banner"></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    const state = {
+      port: null,
+      reader: null,
+      writer: null,
+      isReading: false,
+      isHold: false,
+      isSimulating: false,
+      unit: 'cm',
+      offsetCm: 120.0,
+      angle: 45,
+      baseCm: 150.0,
+      heightCm: 150.0,
+      totalHeightCm: 270.0,
+      hypoCm: 212.13,
+      temperatureC: 28,
+      logs: [],
+      trialCount: 1,
+      simInterval: null
+    };
+
+    const connectBtn = document.getElementById('connectBtn');
+    const simBtn = document.getElementById('simBtn');
+    const holdBtn = document.getElementById('holdBtn');
+    const statusBadge = document.getElementById('statusBadge');
+    const statusText = document.getElementById('statusText');
+    const unitSelector = document.getElementById('unitSelector');
+    const offsetInput = document.getElementById('offsetInput');
+    const tempInput = document.getElementById('tempInput');
+    const speedOfSoundLabel = document.getElementById('speedOfSound');
+    const angleRange = document.getElementById('angleRange');
+    const rangeVal = document.getElementById('rangeVal');
+    const proofTrace = document.getElementById('proofTrace');
+    const vectorCanvas = document.getElementById('vectorCanvas');
+    const ctx = vectorCanvas.getContext('2d');
+    const asymptoteWarn = document.getElementById('asymptoteWarn');
+
+    const dispBase = document.getElementById('dispBase');
+    const dispAngle = document.getElementById('dispAngle');
+    const dispHeight = document.getElementById('dispHeight');
+    const dispTotalHeight = document.getElementById('dispTotalHeight');
+    const dispHypo = document.getElementById('dispHypo');
+
+    function formatLength(cm) {
+      if (cm < 0 || isNaN(cm) || !isFinite(cm)) return 'Undefined';
+      if (state.unit === 'm') return (cm / 100).toFixed(3) + ' m';
+      if (state.unit === 'ft') {
+        const totalInches = cm / 2.54;
+        const feet = Math.floor(totalInches / 12);
+        const inches = (totalInches % 12).toFixed(1);
+        return `${feet}' ${inches}"`;
+      }
+      return cm.toFixed(1) + ' cm';
+    }
+
+    function calculateTrigonometry() {
+      // Singularity guard for 90 degrees
+      if (state.angle >= 90) {
+        state.heightCm = Infinity;
+        state.totalHeightCm = Infinity;
+        state.hypoCm = Infinity;
+        return;
+      }
+      const rad = (state.angle * Math.PI) / 180;
+      state.heightCm = state.baseCm * Math.tan(rad);
+      state.totalHeightCm = state.heightCm + state.offsetCm;
+      state.hypoCm = state.baseCm / Math.cos(rad);
+    }
+
+    function resizeCanvas() {
+      const rect = vectorCanvas.parentElement.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      vectorCanvas.width = rect.width * dpr;
+      vectorCanvas.height = rect.height * dpr;
+      ctx.scale(dpr, dpr);
+      renderVectorDiagram();
+    }
+    window.addEventListener('resize', resizeCanvas);
+
+    // Simulator Toggle
+    simBtn.addEventListener('click', () => {
+      state.isSimulating = !state.isSimulating;
+      if (state.isSimulating) {
+        simBtn.textContent = 'Stop Sim';
+        simBtn.classList.add('btn-danger');
+        statusBadge.className = 'badge-status simulation';
+        statusText.textContent = 'Simulation Stream Active';
+        holdBtn.disabled = false;
+
+        state.simInterval = setInterval(() => {
+          if (!state.isHold) {
+            // Realistic ultrasonic jitter simulation
+            const jitter = (Math.random() - 0.5) * 1.5;
+            state.baseCm = Math.max(20, Math.min(350, 180 + jitter));
+            calculateTrigonometry();
+            updateMetricsDisplay();
+            updateMathematicalProof();
+            renderVectorDiagram();
+          }
+        }, 300);
+      } else {
+        clearInterval(state.simInterval);
+        simBtn.textContent = 'Simulate Demo';
+        simBtn.classList.remove('btn-danger');
+        statusBadge.className = 'badge-status';
+        statusText.textContent = 'Hardware Offline';
+        holdBtn.disabled = true;
+      }
+    });
+
+    // Hardware Web Serial Connection
+    connectBtn.addEventListener('click', async () => {
+      if (!('serial' in navigator)) {
+        alert('Web Serial API is not supported in this browser. Please use Chrome, Edge, or Opera.');
+        return;
+      }
+      try {
+        state.port = await navigator.serial.requestPort();
+        await state.port.open({ baudRate: 115200 });
+
+        if (state.isSimulating) simBtn.click(); // Stop simulation if hardware connects
+
+        statusBadge.className = 'badge-status active';
+        statusText.textContent = 'Uno Synchronized (115200 baud)';
+        connectBtn.style.display = 'none';
+        holdBtn.disabled = false;
+
+        state.writer = state.port.writable.getWriter();
+        readTelemetryLoop();
+      } catch (err) {
+        console.error('Serial Error:', err);
+      }
+    });
+
+    holdBtn.addEventListener('click', async () => {
+      state.isHold = !state.isHold;
+      holdBtn.textContent = state.isHold ? 'Resume Sampling' : 'Freeze / Hold';
+      holdBtn.classList.toggle('btn-danger', state.isHold);
+
+      if (state.writer) {
+        await state.writer.write(new TextEncoder().encode('CMD:HOLD_TOGGLE\n'));
+      }
+    });
+
+    async function sendCommand(cmd) {
+      if (state.writer) {
+        await state.writer.write(new TextEncoder().encode(cmd + '\n'));
+      }
+    }
+
+    document.querySelectorAll('.segmented-control button').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.segmented-control button').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        const deg = Math.min(89, parseInt(e.target.dataset.angle));
+        angleRange.value = deg;
+        rangeVal.textContent = deg + '°';
+        state.angle = deg;
+        calculateTrigonometry();
+        updateMetricsDisplay();
+        updateMathematicalProof();
+        renderVectorDiagram();
+        sendCommand(`SET_ANGLE:${deg}`);
+      });
+    });
+
+    angleRange.addEventListener('input', (e) => {
+      const deg = Math.min(89, parseInt(e.target.value));
+      state.angle = deg;
+      rangeVal.textContent = deg + '°';
+      document.querySelectorAll('.segmented-control button').forEach(b => {
+        b.classList.toggle('active', parseInt(b.dataset.angle) === deg);
+      });
+      calculateTrigonometry();
+      updateMetricsDisplay();
+      updateMathematicalProof();
+      renderVectorDiagram();
+      sendCommand(`SET_ANGLE:${deg}`);
+    });
+
+    offsetInput.addEventListener('input', (e) => {
+      state.offsetCm = parseFloat(e.target.value) || 0.0;
+      calculateTrigonometry();
+      updateMetricsDisplay();
+      updateMathematicalProof();
+      renderVectorDiagram();
+      sendCommand(`SET_OFFSET:${state.offsetCm}`);
+    });
+
+    tempInput.addEventListener('input', (e) => {
+      state.temperatureC = parseFloat(e.target.value) || 20;
+      const speed = (331.3 + 0.606 * state.temperatureC).toFixed(1);
+      speedOfSoundLabel.textContent = `${speed} m/s`;
+      sendCommand(`SET_TEMP:${state.temperatureC}`);
+    });
+
+    unitSelector.addEventListener('change', (e) => {
+      state.unit = e.target.value;
+      document.getElementById('guessUnitLabel').textContent = state.unit;
+      document.getElementById('offsetUnitLabel').textContent = state.unit;
+      updateMetricsDisplay();
+      updateMathematicalProof();
+      renderVectorDiagram();
+    });
+
+    async function readTelemetryLoop() {
+      state.isReading = true;
+      const textDecoder = new TextDecoderStream();
+      state.port.readable.pipeTo(textDecoder.writable);
+      state.reader = textDecoder.readable.getReader();
+
+      let streamBuffer = '';
+      while (state.isReading) {
+        const { value, done } = await state.reader.read();
+        if (done) break;
+        if (value) {
+          streamBuffer += value;
+          const packets = streamBuffer.split('\n');
+          streamBuffer = packets.pop();
+
+          for (const pkt of packets) {
+            parsePacket(pkt.trim());
+          }
+        }
+      }
+    }
+
+    function parsePacket(raw) {
+      if (!raw.startsWith('\$DATA,')) return;
+      const f = raw.split(',');
+      if (f.length < 8) return;
+
+      state.baseCm = parseFloat(f[2]);
+      state.angle = Math.min(89, parseInt(f[3]));
+      state.isHold = f[7] === '1';
+
+      calculateTrigonometry();
+
+      holdBtn.textContent = state.isHold ? 'Resume Sampling' : 'Freeze / Hold';
+      holdBtn.classList.toggle('btn-danger', state.isHold);
+
+      updateMetricsDisplay();
+      updateMathematicalProof();
+      renderVectorDiagram();
+    }
+
+    function updateMetricsDisplay() {
+      dispBase.textContent = formatLength(state.baseCm);
+      dispAngle.textContent = `${state.angle}°`;
+
+      if (state.angle >= 90) {
+        dispHeight.textContent = 'Undefined';
+        dispTotalHeight.textContent = 'Undefined';
+        dispHypo.textContent = 'Undefined';
+        asymptoteWarn.textContent = 'Asymptote at 90°';
+        asymptoteWarn.style.color = 'var(--rose)';
+        return;
+      }
+
+      asymptoteWarn.textContent = 'Optical Sight Axis';
+      asymptoteWarn.style.color = 'var(--text-muted)';
+      dispHeight.textContent = formatLength(state.heightCm);
+      dispTotalHeight.textContent = formatLength(state.totalHeightCm);
+      dispHypo.textContent = formatLength(state.hypoCm);
+    }
+
+    function updateMathematicalProof() {
+      if (state.angle >= 90) {
+        proofTrace.innerHTML = `
+          <span class="proof-warning">&bull; Mathematical Singularity:</span> tan(90&deg;) = 1 / 0 (Undefined / Infinity).<br>
+          At 90&deg;, the line of sight is parallel to the target plane and never intersects it. System enforces &theta; &le; 89&deg;.
+        `;
+        return;
+      }
+
+      if (state.baseCm <= 0) {
+        proofTrace.innerHTML = `<em>Target out of valid ultrasonic reflection range (2 cm &ndash; 450 cm).</em>`;
+        return;
+      }
+
+      const rad = (state.angle * Math.PI) / 180;
+      const tanVal = Math.tan(rad).toFixed(4);
+      const cosVal = Math.cos(rad).toFixed(4);
+
+      proofTrace.innerHTML = `
+        &bull; <strong>Fundamental Law:</strong> tan(&theta;) = Opposite / Adjacent = h / x<br>
+        &bull; <strong>Step 1 (Trigonometric Height):</strong> h = x &middot; tan(${state.angle}&deg;) = ${state.baseCm.toFixed(1)} cm &times; ${tanVal} = <span class="proof-highlight">${state.heightCm.toFixed(2)} cm</span><br>
+        &bull; <strong>Step 2 (Observer Superposition):</strong> H = h + y&#8320; = ${state.heightCm.toFixed(1)} + ${state.offsetCm.toFixed(1)} = <span class="proof-emerald">${state.totalHeightCm.toFixed(2)} cm</span> (${formatLength(state.totalHeightCm)})<br>
+        &bull; <strong>Step 3 (Line of Sight Hypotenuse):</strong> L = x / cos(${state.angle}&deg;) = ${state.baseCm.toFixed(1)} / ${cosVal} = <strong>${state.hypoCm.toFixed(2)} cm</strong>
+      `;
+    }
+
+    function renderVectorDiagram() {
+      const rect = vectorCanvas.parentElement.getBoundingClientRect();
+      const W = rect.width;
+      const H = rect.height;
+      ctx.clearRect(0, 0, W, H);
+
+      // Background grid
+      ctx.strokeStyle = '#151d32';
+      ctx.lineWidth = 1;
+      const gridSize = 25;
+      for (let x = 0; x < W; x += gridSize) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+      }
+      for (let y = 0; y < H; y += gridSize) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+      }
+
+      if (state.baseCm <= 0 || state.angle < 0) return;
+
+      const marginX = 80;
+      const groundY = H - 40;
+      const observerY = groundY - Math.min(60, state.offsetCm * 0.4);
+
+      const maxPlotW = W - 220;
+      const maxPlotH = H - 100;
+      const dynamicScale = Math.min(maxPlotW / state.baseCm, maxPlotH / Math.max(state.heightCm, 10));
+      const drawX = state.baseCm * dynamicScale;
+      const drawY = Math.min(H - 60, state.heightCm * dynamicScale);
+
+      const pOrigin = { x: marginX, y: observerY };
+      const pWallBase = { x: marginX + drawX, y: observerY };
+      const pWallTop = { x: marginX + drawX, y: observerY - drawY };
+
+      // Ground plane
+      ctx.strokeStyle = '#334155';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(marginX - 30, groundY);
+      ctx.lineTo(W - 40, groundY);
+      ctx.stroke();
+
+      // Tripod / Observer height line (y0)
+      ctx.strokeStyle = '#64748b';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath();
+      ctx.moveTo(pOrigin.x, groundY);
+      ctx.lineTo(pOrigin.x, observerY);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.font = '500 10px JetBrains Mono';
+      ctx.fillStyle = '#94a3b8';
+      ctx.fillText(`y₀ = ${formatLength(state.offsetCm)}`, pOrigin.x - 65, groundY - 15);
+
+      // Triangle fill
+      ctx.beginPath();
+      ctx.moveTo(pOrigin.x, pOrigin.y);
+      ctx.lineTo(pWallBase.x, pWallBase.y);
+      ctx.lineTo(pWallTop.x, pWallTop.y);
+      ctx.closePath();
+      const grad = ctx.createLinearGradient(pOrigin.x, pOrigin.y, pWallTop.x, pWallTop.y);
+      grad.addColorStop(0, 'rgba(56, 189, 248, 0.15)');
+      grad.addColorStop(1, 'rgba(251, 191, 36, 0.05)');
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      // Right angle indicator
+      const sqSize = 14;
+      ctx.strokeStyle = '#94a3b8';
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect(pWallBase.x - sqSize, pWallBase.y - sqSize, sqSize, sqSize);
+
+      // Angle arc
+      ctx.beginPath();
+      ctx.arc(pOrigin.x, pOrigin.y, 40, 0, -((state.angle * Math.PI) / 180), true);
+      ctx.strokeStyle = '#fbbf24';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Base vector (x)
+      ctx.beginPath();
+      ctx.moveTo(pOrigin.x, pOrigin.y);
+      ctx.lineTo(pWallBase.x, pWallBase.y);
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 3;
+      ctx.stroke();
+
+      // Opposite vector (h)
+      ctx.beginPath();
+      ctx.moveTo(pWallBase.x, pWallBase.y);
+      ctx.lineTo(pWallTop.x, pWallTop.y);
+      ctx.strokeStyle = '#10b981';
+      ctx.lineWidth = 3;
+      ctx.stroke();
+
+      // Line of Sight (Hypotenuse L)
+      ctx.beginPath();
+      ctx.setLineDash([6, 4]);
+      ctx.moveTo(pOrigin.x, pOrigin.y);
+      ctx.lineTo(pWallTop.x, pWallTop.y);
+      ctx.strokeStyle = '#fbbf24';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Labels
+      ctx.font = '600 11px JetBrains Mono';
+      ctx.fillStyle = '#38bdf8';
+      ctx.fillText(`Base: ${formatLength(state.baseCm)}`, pOrigin.x + drawX / 2 - 35, pOrigin.y + 20);
+
+      ctx.fillStyle = '#10b981';
+      ctx.fillText(`h = ${formatLength(state.heightCm)}`, pWallBase.x + 12, pWallBase.y - drawY / 2);
+
+      ctx.fillStyle = '#fbbf24';
+      ctx.fillText(`L = ${formatLength(state.hypoCm)}`, pOrigin.x + drawX / 3 - 20, pOrigin.y - drawY / 2 - 8);
+
+      ctx.fillStyle = '#fff';
+      ctx.fillText(`θ = ${state.angle}°`, pOrigin.x + 50, pOrigin.y - 10);
+    }
+
+    // Visitor Challenge Quiz
+    document.getElementById('verifyGuessBtn').addEventListener('click', () => {
+      const input = document.getElementById('visitorGuess');
+      const banner = document.getElementById('quizResult');
+      const guess = parseFloat(input.value);
+
+      if (isNaN(guess) || state.totalHeightCm <= 0 || !isFinite(state.totalHeightCm)) {
+        banner.style.display = 'block';
+        banner.style.background = 'rgba(244, 63, 94, 0.2)';
+        banner.style.color = '#fb7185';
+        banner.textContent = 'Please acquire a stable sensor reading first!';
+        return;
+      }
+
+      let actual = state.totalHeightCm;
+      if (state.unit === 'm') actual = state.totalHeightCm / 100;
+      if (state.unit === 'ft') actual = state.totalHeightCm / 30.48;
+
+      const error = Math.abs(guess - actual);
+      const accuracy = Math.max(0, 100 - (error / actual) * 100);
+
+      banner.style.display = 'block';
+      if (accuracy >= 90) {
+        banner.style.background = 'rgba(16, 185, 129, 0.2)';
+        banner.style.color = '#34d399';
+        banner.textContent = `Terrific! Accuracy: ${accuracy.toFixed(1)}% (Actual: ${actual.toFixed(2)} ${state.unit})`;
+      } else {
+        banner.style.background = 'rgba(245, 158, 11, 0.2)';
+        banner.style.color = '#fbbf24';
+        banner.textContent = `Deviation: ${error.toFixed(2)} ${state.unit} | Precision: ${accuracy.toFixed(1)}%`;
+      }
+    });
+
+    // Logging & Official CSV Export
+    document.getElementById('recordBtn').addEventListener('click', () => {
+      if (state.baseCm <= 0 || !isFinite(state.totalHeightCm)) return;
+      const tbody = document.querySelector('#telemetryTable tbody');
+      const tr = document.createElement('tr');
+      const rad = (state.angle * Math.PI) / 180;
+
+      tr.innerHTML = `
+        <td>${state.trialCount}</td>
+        <td>${state.angle}&deg;</td>
+        <td>${state.baseCm.toFixed(1)} cm</td>
+        <td>${Math.tan(rad).toFixed(4)}</td>
+        <td>${state.heightCm.toFixed(1)} cm</td>
+        <td><strong>${state.totalHeightCm.toFixed(1)} cm</strong></td>
+        <td>${state.hypoCm.toFixed(1)} cm</td>
+      `;
+      tbody.prepend(tr);
+
+      state.logs.push({
+        trial: state.trialCount++,
+        angle: state.angle,
+        base: state.baseCm,
+        height: state.heightCm,
+        total: state.totalHeightCm,
+        hypo: state.hypoCm
+      });
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      document.querySelector('#telemetryTable tbody').innerHTML = '';
+      state.logs = [];
+      state.trialCount = 1;
+    });
+
+    document.getElementById('exportBtn').addEventListener('click', () => {
+      if (state.logs.length === 0) {
+        alert('No logged records to export!');
+        return;
+      }
+      const studentName = document.getElementById('candidateName').value || 'Student';
+      const rollNo = document.getElementById('rollNumber').value || 'NA';
+
+      let csv = `Institution,Zion Matriculation Higher Secondary School\n`;
+      csv += `Project,TrigMeter Pro (Class 12 Mathematics Project)\n`;
+      csv += `Candidate Name,${studentName}\n`;
+      csv += `Roll Number,${rollNo}\n\n`;
+      csv += `Trial,Angle_Deg,Base_cm,Height_cm,Total_Height_cm,Hypotenuse_cm\n`;
+
+      state.logs.forEach(l => {
+        csv += `${l.trial},${l.angle},${l.base},${l.height},${l.total},${l.hypo}\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `Zion_TrigMeter_Observation_${rollNo}.csv`;
+      link.click();
+    });
+
+    // Run initial demo setup
+    calculateTrigonometry();
+    updateMetricsDisplay();
+    updateMathematicalProof();
+    setTimeout(resizeCanvas, 100);
+  </script>
+</body>
+</html>
