@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZMHSS | Mathematics</title>
+  <title>Zion Matriculation Higher Secondary School | Department of Mathematics (Class 12 - A21)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -95,12 +95,11 @@
       line-height: 1.2;
     }
     .brand-title p {
-      font-size: clamp(10.5px, 0.95vw, 12px);
+      font-size: clamp(11.5px, 1vw, 13px);
       color: var(--gold);
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-top: 2px;
+      letter-spacing: 0.03em;
+      margin-top: 3px;
     }
     .brand-title span {
       font-size: clamp(9.5px, 0.85vw, 11px);
@@ -457,7 +456,7 @@
     }
     table {
       width: 100%;
-      min-width: 620px;
+      min-width: 640px;
       border-collapse: collapse;
       font-size: 11px;
       font-family: var(--font-mono);
@@ -484,13 +483,13 @@
 </head>
 <body>
   <div class="shell">
-    <!-- Institutional Header -->
+    <!-- Header -->
     <header>
       <div class="brand">
         <div class="brand-crest">Z</div>
         <div class="brand-title">
           <h1>Zion Matriculation Higher Secondary School</h1>
-          <p>Department of Mathematics &bull; Class- 12-A21</p>
+          <p>Department of Mathematics (Class 12 - A21)</p>
           <span>TRIGMETER PRO: EMBEDDED ANALYTICAL &amp; INVERSE TRIGONOMETRIC HYPSOMETER</span>
         </div>
       </div>
@@ -520,7 +519,7 @@
       </div>
       <div class="metadata-group">
         <label>Academic Authority:</label>
-        <span style="font-family: var(--font-mono); color: var(--gold);">Department of Mathematics &bull; Zion MHSS</span>
+        <span style="font-family: var(--font-mono); color: var(--gold);">Department of Mathematics (Class 12 - A21)</span>
       </div>
     </div>
 
@@ -554,7 +553,7 @@
       <div class="metric-card accent-purple">
         <div class="metric-label">Inverse Trig <span>arctan(h/x)</span></div>
         <div class="metric-value" id="dispInverseAngle" style="color: var(--purple);">--&deg;</div>
-        <div class="metric-sub">Principal Branch Cross-Check</div>
+        <div class="metric-sub">Principal Branch Verification</div>
       </div>
     </section>
 
@@ -674,7 +673,7 @@
             <h2>Class 12 Syllabus Reference</h2>
           </div>
           <div style="font-size: 11px; color: var(--text-muted); line-height: 1.6; display: flex; flex-direction: column; gap: 8px;">
-            <p><strong style="color: var(--purple);">&bull; Inverse Trigonometry:</strong> &theta; = arctan(h / x). Principal branch domain: (-&pi;/2, &pi;/2). Reconstructs elevation angle from raw geometric coordinates.</p>
+            <p><strong style="color: var(--purple);">&bull; Inverse Trigonometry:</strong> &theta; = arctan(h / x). Principal branch domain: (-&pi;/2, &pi;/2). Reconstructs elevation angle from geometric coordinates.</p>
             <p><strong style="color: var(--accent);">&bull; Applications of Vector Algebra:</strong> Position vector r&#8407; = x i&#770; + h j&#770;. Modulus: |r&#8407;| = &radic;(x&sup2; + h&sup2;) = x &middot; sec(&theta;). Direction cosines: cos(&alpha;) = x/|r&#8407;|, cos(&beta;) = h/|r&#8407;|.</p>
             <p><strong style="color: var(--gold);">&bull; Differential Error Analysis:</strong> Total differential dh = tan(&theta;) dx + x sec&sup2;(&theta;) d&theta;. Models rapid error growth near 90&deg;.</p>
           </div>
@@ -702,7 +701,7 @@
       temperatureC: 28,
       candidateName: 'Prawin Jovi',
       rollNumber: '12A2111',
-      activeTab: 'vector', // 'vector' | 'tangent' | 'sensitivity'
+      activeTab: 'vector',
       logs: [],
       trialCount: 1
     };
@@ -785,22 +784,26 @@
       return cm.toFixed(1) + ' cm';
     }
 
+    // Mathematical Calibration Engine
     function calculateTrigonometry() {
       if (state.baseCm <= 0) return;
       if (state.angle >= 90) {
         state.heightCm = Infinity;
         state.totalHeightCm = Infinity;
         state.hypoCm = Infinity;
-        state.inverseAngleDeg = 90;
+        state.inverseAngleDeg = 90.0;
         return;
       }
+
+      // Forward Vector Model
       const rad = (state.angle * Math.PI) / 180;
       state.heightCm = state.baseCm * Math.tan(rad);
       state.totalHeightCm = state.heightCm + state.offsetCm;
       state.hypoCm = state.baseCm / Math.cos(rad);
 
+      // Calibrated Inverse Model: arctan strictly evaluates geometric altitude h (without y0)
       const invRad = Math.atan2(state.heightCm, state.baseCm);
-      state.inverseAngleDeg = (invRad * 180) / Math.PI;
+      state.inverseAngleDeg = Number(((invRad * 180) / Math.PI).toFixed(2));
     }
 
     function resizeCanvas() {
@@ -996,7 +999,7 @@
         &bull; <strong>Forward Model (Height):</strong> h = x &middot; tan(${state.angle}&deg;) = ${state.baseCm.toFixed(1)} &times; ${tanVal} = <span class="proof-highlight">${state.heightCm.toFixed(2)} cm</span><br>
         &bull; <strong>Superposition of Datum:</strong> H = h + y&#8320; = ${state.heightCm.toFixed(1)} + ${state.offsetCm.toFixed(1)} = <span class="proof-emerald">${state.totalHeightCm.toFixed(2)} cm</span> (${formatLength(state.totalHeightCm)})<br>
         &bull; <strong>Euclidean Vector Norm:</strong> |r&#8407;| = &radic;(x&sup2; + h&sup2;) = x &middot; sec(${state.angle}&deg;) = <strong>${state.hypoCm.toFixed(2)} cm</strong><br>
-        &bull; <strong>Inverse Trigonometric Identity:</strong> &theta; = arctan(h / x) = arctan(${invRatio}) = <span class="proof-purple">${state.inverseAngleDeg.toFixed(2)}&deg;</span> (&equiv; input &theta; within float precision)<br>
+        &bull; <strong>Calibrated Inverse Trigonometry:</strong> &theta; = arctan(h / x) = arctan(${invRatio}) = <span class="proof-purple">${state.inverseAngleDeg.toFixed(2)}&deg;</span> (&equiv; input &theta; within float precision)<br>
         &bull; <strong>Differential Error Sensitivity:</strong> &part;h/&part;&theta; = x &middot; sec&sup2;(&theta;) = ${state.baseCm.toFixed(1)} &times; ${secSqVal} = ${(state.baseCm * parseFloat(secSqVal)).toFixed(2)} cm/rad
       `;
     }
@@ -1011,16 +1014,13 @@
       }
     }
 
-    // =========================================================================
-    // CALIBRATED GRAPH 1: Euclidean Plane Vector Diagram
-    // =========================================================================
+    // Graphical Render 1: Euclidean Plane Vector Diagram
     function renderVectorDiagram() {
       const rect = canvasBox.getBoundingClientRect();
       const W = rect.width;
       const H = rect.height;
       ctx.clearRect(0, 0, W, H);
 
-      // Background Grid
       ctx.strokeStyle = '#121827';
       ctx.lineWidth = 1;
       const gridSize = Math.max(20, Math.floor(W / 30));
@@ -1038,7 +1038,6 @@
         return;
       }
 
-      // Proportional Offsets
       const marginX = Math.max(50, W * 0.12);
       const groundY = H - Math.max(30, H * 0.12);
       const observerY = groundY - Math.min(H * 0.25, state.offsetCm * 0.4);
@@ -1054,7 +1053,7 @@
       const pWallBase = { x: marginX + drawX, y: observerY };
       const pWallTop = { x: marginX + drawX, y: observerY - drawY };
 
-      // Ground plane
+      // Ground line
       ctx.strokeStyle = '#334155';
       ctx.lineWidth = 2;
       ctx.beginPath();
@@ -1127,7 +1126,7 @@
       ctx.stroke();
       ctx.setLineDash([]);
 
-      // Labels
+      // Responsive Labels
       ctx.font = '600 11px JetBrains Mono';
       ctx.fillStyle = '#38bdf8';
       ctx.fillText(`x î = ${formatLength(state.baseCm)}`, pOrigin.x + drawX / 2 - 30, pOrigin.y + 18);
@@ -1142,9 +1141,7 @@
       ctx.fillText(`θ = ${state.angle}° (arctan = ${state.inverseAngleDeg.toFixed(1)}°)`, pOrigin.x + arcRadius + 8, pOrigin.y - 8);
     }
 
-    // =========================================================================
-    // CALIBRATED GRAPH 2: Continuous Tangent Curve & Vertical Asymptote
-    // =========================================================================
+    // Graphical Render 2: Continuous Tangent Curve & Vertical Asymptote
     function renderTangentGraph() {
       const rect = canvasBox.getBoundingClientRect();
       const W = rect.width;
@@ -1158,19 +1155,13 @@
       const plotW = W - marginL - marginR;
       const plotH = H - marginT - marginB;
 
-      // Coordinate axes mapping:
-      // X maps 0 deg to 90 deg linearly across plotW
-      // Y maps tan(theta) from 0 to Y_MAX dynamically
       const curRad = (state.angle * Math.PI) / 180;
       const curTan = Math.tan(curRad);
-      
-      // Calibrated Y ceiling: ensures high angles (60°, 75°, 85°) fit without clipping
       const Y_MAX = Math.max(6.0, Math.ceil(curTan * 1.3));
 
       const mapX = (deg) => marginL + (deg / 90) * plotW;
       const mapY = (val) => (H - marginB) - (val / Y_MAX) * plotH;
 
-      // Grid lines & Major ticks (every 15 deg on X, 1.0 unit on Y)
       ctx.strokeStyle = '#151d30';
       ctx.lineWidth = 1;
       ctx.font = '500 10px JetBrains Mono';
@@ -1195,7 +1186,6 @@
         ctx.fillText(yVal.toFixed(1), marginL - 32, gy + 4);
       }
 
-      // Solid Axes
       ctx.strokeStyle = '#334155';
       ctx.lineWidth = 1.5;
       ctx.beginPath();
@@ -1207,7 +1197,7 @@
       ctx.fillText('0°', marginL - 6, H - marginB + 16);
       ctx.fillText('0.0', marginL - 25, H - marginB + 4);
 
-      // Asymptote Line at 90 deg
+      // Asymptote at 90 deg
       const asymX = mapX(90);
       ctx.strokeStyle = '#f43f5e';
       ctx.lineWidth = 1.5;
@@ -1222,7 +1212,7 @@
       ctx.font = '600 10px JetBrains Mono';
       ctx.fillText('Asymptote (θ=90°)', asymX - 55, marginT - 8);
 
-      // Continuous Tan Curve (calibrated at step 0.2 deg)
+      // Tangent Curve
       ctx.strokeStyle = '#38bdf8';
       ctx.lineWidth = 2.5;
       ctx.beginPath();
@@ -1245,12 +1235,10 @@
       }
       ctx.stroke();
 
-      // Current Operational Angle Marker
       if (state.angle < 90 && curTan <= Y_MAX) {
         const curX = mapX(state.angle);
         const curY = mapY(curTan);
 
-        // Guide dotted lines
         ctx.strokeStyle = 'rgba(251, 191, 36, 0.4)';
         ctx.lineWidth = 1;
         ctx.setLineDash([3, 3]);
@@ -1261,13 +1249,11 @@
         ctx.stroke();
         ctx.setLineDash([]);
 
-        // Intersection point
         ctx.fillStyle = '#fbbf24';
         ctx.beginPath();
         ctx.arc(curX, curY, 5, 0, Math.PI * 2);
         ctx.fill();
 
-        // Label
         ctx.fillStyle = '#fff';
         ctx.font = '600 11px JetBrains Mono';
         const labelX = curX > W - 180 ? curX - 160 : curX + 10;
@@ -1276,9 +1262,7 @@
       }
     }
 
-    // =========================================================================
-    // CALIBRATED GRAPH 3: Differential Sensitivity Curve dh/dtheta = x * sec^2(theta)
-    // =========================================================================
+    // Graphical Render 3: Differential Sensitivity Curve dh/dtheta = x * sec^2(theta)
     function renderSensitivityGraph() {
       const rect = canvasBox.getBoundingClientRect();
       const W = rect.width;
@@ -1296,14 +1280,11 @@
       const curRad = (state.angle * Math.PI) / 180;
       const curSecSq = 1 / (Math.cos(curRad) * Math.cos(curRad));
       const curSensitivity = baseVal * curSecSq;
-
-      // Dynamic Y ceiling calibrated to current reading
       const SENS_MAX = Math.max(baseVal * 6.0, curSensitivity * 1.35);
 
       const mapX = (deg) => marginL + (deg / 89) * plotW;
       const mapY = (val) => (H - marginB) - (val / SENS_MAX) * plotH;
 
-      // Grid lines
       ctx.strokeStyle = '#151d30';
       ctx.lineWidth = 1;
       ctx.font = '500 10px JetBrains Mono';
@@ -1329,7 +1310,6 @@
         ctx.fillText(v >= 1000 ? `${(v/1000).toFixed(1)}k` : v.toFixed(0), marginL - 38, gy + 4);
       }
 
-      // Coordinate axes
       ctx.strokeStyle = '#334155';
       ctx.lineWidth = 1.5;
       ctx.beginPath();
@@ -1341,7 +1321,7 @@
       ctx.fillText('0°', marginL - 6, H - marginB + 16);
       ctx.fillText('0', marginL - 18, H - marginB + 4);
 
-      // Curve: dh/dtheta = x * sec^2(theta)
+      // Curve
       ctx.strokeStyle = '#a855f7';
       ctx.lineWidth = 2.5;
       ctx.beginPath();
@@ -1365,12 +1345,10 @@
       }
       ctx.stroke();
 
-      // Current Operational Sensitivity Point
       if (curSensitivity <= SENS_MAX) {
         const curX = mapX(state.angle);
         const curY = mapY(curSensitivity);
 
-        // Guide lines
         ctx.strokeStyle = 'rgba(16, 185, 129, 0.4)';
         ctx.lineWidth = 1;
         ctx.setLineDash([3, 3]);
@@ -1381,13 +1359,11 @@
         ctx.stroke();
         ctx.setLineDash([]);
 
-        // Marker Point
         ctx.fillStyle = '#10b981';
         ctx.beginPath();
         ctx.arc(curX, curY, 5, 0, Math.PI * 2);
         ctx.fill();
 
-        // Label
         ctx.fillStyle = '#fff';
         ctx.font = '600 11px JetBrains Mono';
         const labelX = curX > W - 220 ? curX - 210 : curX + 12;
@@ -1439,7 +1415,7 @@
       }
 
       let csv = `Institution,Zion Matriculation Higher Secondary School\n`;
-      csv += `Academic Authority,Department of Mathematics\n`;
+      csv += `Academic Authority,Department of Mathematics (Class 12 - A21)\n`;
       csv += `Project,TrigMeter Pro (Analytical & Inverse Trigonometric Hypsometer)\n`;
       csv += `Candidate Name,${state.candidateName}\n`;
       csv += `Exam Roll Number,${state.rollNumber}\n\n`;
